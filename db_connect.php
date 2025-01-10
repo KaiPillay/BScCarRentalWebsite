@@ -1,6 +1,7 @@
 <?php
 $host = 'localhost';
 $db = 'car_rental';
+$port = 3306;
 $user = 'root';
 $pass = 'P455word';
 
