@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db = 'car_rental';
 $user = 'root';
-$pass = '';
+$pass = 'P455word';
 
 $conn = new mysqli($host, $user, $pass, $db);
 
