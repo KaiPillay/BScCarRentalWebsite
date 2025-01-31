@@ -1,7 +1,6 @@
 <?php
 require 'db_connect.php';
 
-echo "Hi";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);

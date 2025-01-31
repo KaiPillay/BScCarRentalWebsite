@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function populateForm() {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('pickup').value = params.get('location') || '';
+            document.getElementById('dropoff').value = params.get('location') || '';
+            document.getElementById('date').value = params.get('start') || '';
+            document.getElementById('return_date').value = params.get('stop') || '';
+        }
+    </script>
+</head>
+<body onload="populateForm()">
+    <header>
+        <nav>
+            <div class="nav__header">
+                <div class="nav__logo">
+                    <a href="#">CarRental</a>
+                </div>
+                <div class="nav__menu__btn">&#9776;</div>
+                <ul class="nav__links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Cars</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header__container">
+            <h1>Find the Perfect Car for Your Journey</h1>
+            <form>
+                <div class="input__group">
+                    <label for="pickup">Pick-up Location</label>
+                    <input type="text" id="pickup" placeholder="Enter location">
+                </div>
+                <div class="input__group">
+                    <label for="dropoff">Drop-off Location</label>
+                    <input type="text" id="dropoff" placeholder="Enter location">
+                </div>
+                <div class="input__group">
+                    <label for="date">Pick-up Date</label>
+                    <input type="date" id="date">
+                </div>
+                <div class="input__group">
+                    <label for="return_date">Return Date</label>
+                    <input type="date" id="return_date">
+                </div>
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
+    </header>
+    <section class="featured__cars">
+        <h2>Featured Cars</h2>
+        <div class="car__list">
+            <div class="car__item">
+                <img src="car1.jpg" alt="Car 1">
+                <h3>Luxury Sedan</h3>
+                <p>£50/day</p>
+                <button>Book Now</button>
+            </div>
+            <div class="car__item">
+                <img src="car2.jpg" alt="Car 2">
+                <h3>Compact SUV</h3>
+                <p>£40/day</p>
+                <button>Book Now</button>
+            </div>
+            <div class="car__item">
+                <img src="car3.jpg" alt="Car 3">
+                <h3>Economy Hatchback</h3>
+                <p>£30/day</p>
+                <button>Book Now</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

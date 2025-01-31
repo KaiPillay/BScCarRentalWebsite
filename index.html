@@ -19,7 +19,7 @@
       <nav>
         <div class="nav__header">
           <div class="nav__logo">
-            <a href="#">RENTAL</a>
+            <a href="#">Dream Car Rental</a>
           </div>
           <div class="nav__menu__btn" id="menu-btn">
             <i class="ri-menu-line"></i>
@@ -33,51 +33,56 @@
         </ul>
         <div class="nav__btn">
           <a href="login.html">
-            <button class="btn">Get Started</button>
+            <button class="btn">Login</button>
           </a>
         </div>
         
       </nav>      
-      <div class="header__container" id="home">
-        <h1>PREMIUM CAR RENTAL</h1>
-        <form action="/">
-          <div class="input__group">
-            <label for="location">Pick up & Return location</label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              placeholder="York"
-            />
-          </div>
-          <div class="input__group">
-            <label for="start">Start</label>
-            <input
-              type="text"
-              name="start"
-              id="start"
-              placeholder="Aug 16, 10:00 AM"
-            />
-          </div>
-          <div class="input__group">
-            <label for="stop">Stop</label>
-            <input
-              type="text"
-              name="stop"
-              id="stop"
-              placeholder="Aug 18, 10:00 PM"
-            />
-          </div>
-          <button class="btn">
-            <i class="ri-search-line"></i>
-          </button>
-        </form>
-        <img src="assets/header.png" alt="header" />
-      </div>
-      <a href="#about" class="scroll__down">
-        <i class="ri-arrow-down-line"></i>
-      </a>
-    </header>
+    </nav>      
+    <div class="header__container" id="home">
+      <h1>PREMIUM CAR RENTAL</h1>
+      <form action="rent.html" method="GET">
+        <div class="input__group">
+          <label for="location">Pick up & Return location</label>
+          <select name="location" id="location" required>
+            <option value="York">York</option>
+            <option value="London">London</option>
+            <option value="Manchester">Manchester</option>
+            <option value="Birmingham">Birmingham</option>
+            <option value="Edinburgh">Edinburgh</option>
+            <option value="Newcastle Upon Tyne">Newcastle Upon Tyne</option>
+          </select>
+        </div>
+        <div class="input__group">
+          <label for="start">Start</label>
+          <input
+            type="date"
+            name="start"
+            id="start"
+            required
+          />
+        </div>
+        <div class="input__group">
+          <label for="stop">Stop</label>
+          <input
+            type="date"
+            name="stop"
+            id="stop"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">
+          <i class="ri-search-line"></i>
+        </button>
+      </form>
+      <img src="assets/header.png" alt="header" />
+    </div>
+    <a href="#about" class="scroll__down">
+      <i class="ri-arrow-down-line"></i>
+    </a>
+  </header>
+
+
 
     <section class="section__container range__container" id="about">
       <h2 class="section__header">WIDE RANGE OF VEHICLES</h2>
@@ -147,7 +152,7 @@
               <div class="select__info">
                 <div class="select__info__card">
                   <span><i class="ri-speed-up-line"></i></span>
-                  <h4>200 <span>km/h</span></h4>
+                  <h4>200 <span>mp/h</span></h4>
                 </div>
                 <div class="select__info__card">
                   <span><i class="ri-settings-5-line"></i></span>
@@ -170,7 +175,7 @@
               <div class="select__info">
                 <div class="select__info__card">
                   <span><i class="ri-speed-up-line"></i></span>
-                  <h4>215 <span>km/h</span></h4>
+                  <h4>215 <span>mp/h</span></h4>
                 </div>
                 <div class="select__info__card">
                   <span><i class="ri-settings-5-line"></i></span>
@@ -193,7 +198,7 @@
               <div class="select__info">
                 <div class="select__info__card">
                   <span><i class="ri-speed-up-line"></i></span>
-                  <h4>306 <span>km/h</span></h4>
+                  <h4>306 <span>mp/h</span></h4>
                 </div>
                 <div class="select__info__card">
                   <span><i class="ri-settings-5-line"></i></span>
@@ -216,7 +221,7 @@
               <div class="select__info">
                 <div class="select__info__card">
                   <span><i class="ri-speed-up-line"></i></span>
-                  <h4>350 <span>km/h</span></h4>
+                  <h4>350 <span>mp/h</span></h4>
                 </div>
                 <div class="select__info__card">
                   <span><i class="ri-settings-5-line"></i></span>
@@ -239,7 +244,7 @@
               <div class="select__info">
                 <div class="select__info__card">
                   <span><i class="ri-speed-up-line"></i></span>
-                  <h4>254 <span>km/h</span></h4>
+                  <h4>254 <span>mp/h</span></h4>
                 </div>
                 <div class="select__info__card">
                   <span><i class="ri-settings-5-line"></i></span>

@@ -7,17 +7,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password, role FROM users WHERE username = ? OR email = ?");
+    $stmt = $conn->prepare("SELECT user_id, password_hash, role FROM users WHERE username = ? OR email = ?");
     $stmt->bind_param("ss", $username, $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+
+        // Fix: Use the correct column name in password verification
+        if (password_verify($password, $user['password_hash'])) {
+            $_SESSION['user_id'] = $user['user_id']; // Fix: Correct session key
             $_SESSION['role'] = $user['role'];
 
+            // Redirect based on role
             switch ($user['role']) {
                 case 'admin':
                     header("Location: admin_dashboard.php");
