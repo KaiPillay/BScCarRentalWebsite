@@ -71,6 +71,11 @@
             required
           />
         </div>
+        <script>
+          const today = new Date().toISOString().split('T')[0];
+          document.getElementById('start').setAttribute('min', today);
+          document.getElementById('stop').setAttribute('min', today);
+        </script>
         <button type="submit" class="btn">
           <i class="ri-search-line"></i>
         </button>
