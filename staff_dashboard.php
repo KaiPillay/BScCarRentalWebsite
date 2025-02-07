@@ -24,8 +24,12 @@ $users_query = "SELECT user_id, username FROM users";
 $users_result = $conn->query($users_query);
 
 // Fetch vehicles from the database
-$vehicles_query = "SELECT vehicle_id, make, model FROM vehicles";
+$vehicles_query = "SELECT vehicle_id, make, model, year, price_per_day, status, created_at FROM vehicles";
 $vehicles_result = $conn->query($vehicles_query);
+
+if (!$vehicles_result) {
+    die("Error fetching vehicles: " . $conn->error);
+}
 
 // Handle manual booking creation
 if (isset($_POST['add_booking'])) {
@@ -43,10 +47,6 @@ if (isset($_POST['add_booking'])) {
         echo "Error: " . $conn->error;
     }
 }
-
-// Fetch vehicles from the database for listing
-$vehicles_query = "SELECT * FROM vehicles";
-$vehicles_result = $conn->query($vehicles_query);
 
 // Fetch bookings from the database
 $bookings_query = "SELECT b.booking_id, b.start_date, b.end_date, b.status, v.make, v.model, u.username
@@ -185,6 +185,7 @@ if (isset($_GET['booking_id'])) {
                     <th>Year</th>
                     <th>Price per Day</th>
                     <th>Status</th>
+                    <th>Created At</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -197,6 +198,7 @@ if (isset($_GET['booking_id'])) {
                         <td><?php echo $vehicle['year']; ?></td>
                         <td><?php echo $vehicle['price_per_day']; ?></td>
                         <td><?php echo $vehicle['status']; ?></td>
+                        <td><?php echo $vehicle['created_at']; ?></td>
                         <td>
                             <a href="edit_vehicle.php?id=<?php echo $vehicle['vehicle_id']; ?>" class="btn">Edit</a>
                             <a href="delete_vehicle.php?id=<?php echo $vehicle['vehicle_id']; ?>" class="btn btn-danger">Delete</a>
