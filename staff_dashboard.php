@@ -7,11 +7,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'staff') {
     exit();
 }
 
-// Connect to the database (update these credentials accordingly)
+// Connection to the database
 $servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
-$dbname = "car_rental"; // Replace with your database name
+$username = "root";
+$password = "";
+$dbname = "car_rental";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
