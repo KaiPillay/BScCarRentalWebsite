@@ -73,19 +73,26 @@
         </div>
         <script>
           const today = new Date().toISOString().split('T')[0];
-          document.getElementById('start').setAttribute('min', today);
-          document.getElementById('stop').setAttribute('min', today);
+          const startInput = document.getElementById('start');
+          const stopInput = document.getElementById('stop');
+
+          startInput.setAttribute('min', today);
+          stopInput.setAttribute('min', today);
+
+          startInput.addEventListener('change', function() {
+            stopInput.setAttribute('min', this.value);
+          });
         </script>
         <button type="submit" class="btn">
           <i class="ri-search-line"></i>
         </button>
-      </form>
-      <img src="assets/header.png" alt="header" />
-    </div>
-    <a href="#about" class="scroll__down">
-      <i class="ri-arrow-down-line"></i>
-    </a>
-  </header>
+            </form>
+            <img src="assets/header.png" alt="header" />
+          </div>
+          <a href="#about" class="scroll__down">
+            <i class="ri-arrow-down-line"></i>
+          </a>
+        </header>
 
 
 
