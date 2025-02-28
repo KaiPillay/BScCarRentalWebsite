@@ -39,8 +39,21 @@ if (isset($_POST['add_booking'])) {
     $end_date = $_POST['end_date'];
     $status = $_POST['status'];
 
-    $add_booking_query = "INSERT INTO bookings (user_id, vehicle_id, start_date, end_date, status)
-                          VALUES ('$user_id', '$vehicle_id', '$start_date', '$end_date', '$status')";
+    // Fetch the price per day for the selected vehicle
+    $vehicle_query = "SELECT price_per_day FROM vehicles WHERE vehicle_id = '$vehicle_id'";
+    $vehicle_result = $conn->query($vehicle_query);
+    $vehicle_data = $vehicle_result->fetch_assoc();
+    $price_per_day = $vehicle_data['price_per_day'];
+
+    // Calculate the total price based on the number of days
+    $start_date_timestamp = strtotime($start_date);
+    $end_date_timestamp = strtotime($end_date);
+    $days_diff = ($end_date_timestamp - $start_date_timestamp) / (60 * 60 * 24); // Number of days
+    $total_price = $days_diff * $price_per_day;
+
+    // Insert the booking into the database
+    $add_booking_query = "INSERT INTO bookings (user_id, vehicle_id, start_date, end_date, status, total_price)
+                          VALUES ('$user_id', '$vehicle_id', '$start_date', '$end_date', '$status', '$total_price')";
     if ($conn->query($add_booking_query) === TRUE) {
         echo "<script>alert('Booking added successfully!');</script>";
     } else {
@@ -159,7 +172,9 @@ if (isset($_GET['booking_id'])) {
             <select name="vehicle_id" required>
                 <option value="">Select Vehicle</option>
                 <?php while ($vehicle = $vehicles_result->fetch_assoc()): ?>
-                    <option value="<?php echo $vehicle['vehicle_id']; ?>"><?php echo $vehicle['make'] . ' ' . $vehicle['model']; ?></option>
+                    <option value="<?php echo $vehicle['vehicle_id']; ?>">
+                        <?php echo $vehicle['make'] . ' ' . $vehicle['model']; ?> - £<?php echo $vehicle['price_per_day']; ?> per day
+                    </option>
                 <?php endwhile; ?>
             </select>
 
