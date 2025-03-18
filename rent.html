@@ -8,10 +8,20 @@
     <script>
         function populateForm() {
             const params = new URLSearchParams(window.location.search);
-            document.getElementById('pickup').value = params.get('location') || '';
-            document.getElementById('dropoff').value = params.get('location') || '';
+            document.getElementById('pickup').value = params.get('pickup') || '';
+            document.getElementById('dropoff').value = params.get('dropoff') || '';
             document.getElementById('date').value = params.get('start') || '';
             document.getElementById('return_date').value = params.get('stop') || '';
+        }
+
+        function getCarInfo(carId) {
+            const pickup = document.getElementById('pickup').value;
+            const dropoff = document.getElementById('dropoff').value;
+            const startDate = document.getElementById('date').value;
+            const returnDate = document.getElementById('return_date').value;
+
+            const url = `book.html?pickup=${encodeURIComponent(pickup)}&dropoff=${encodeURIComponent(dropoff)}&start=${encodeURIComponent(startDate)}&stop=${encodeURIComponent(returnDate)}&carId=${carId}`;
+            window.location.href = url;
         }
     </script>
 </head>
@@ -62,20 +72,23 @@
             <div class="car__item">
                 <img src="assets/select-1.png" alt="Car 1">
                 <h3>Luxury Sedan</h3>
+                <h3>ID = 1</h3>
                 <p>£50/day</p>
-                <button>Book Now</button>
+                <button onclick="getCarInfo(1)">Book Now</button>
             </div>
             <div class="car__item">
                 <img src="assets/select-2.png" alt="Car 2">
                 <h3>Compact SUV</h3>
+                <h3>ID = 2</h3>
                 <p>£40/day</p>
-                <button>Book Now</button>
+                <button onclick="getCarInfo(2)">Book Now</button>
             </div>
             <div class="car__item">
                 <img src="assets/select-3.png" alt="Car 3">
                 <h3>Economy Hatchback</h3>
+                <h3>ID = 3</h3>
                 <p>£30/day</p>
-                <button>Book Now</button>
+                <button onclick="getCarInfo(3)">Book Now</button>
             </div>
         </div>
     </section>
